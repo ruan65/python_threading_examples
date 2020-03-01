@@ -11,11 +11,11 @@ def do_something(seconds):
 
 
 with concurrent.futures.ThreadPoolExecutor() as executor:
-    secs = [1, 2, 3, 4, 5]
-    results = [executor.submit(do_something, sec) for sec in secs]
+    secs = [5, 4, 3, 2, 1]
+    results = executor.map(do_something, secs)
 
-    for f in concurrent.futures.as_completed(results):
-        print(f.result())
+    for r in results:
+        print(r)
 
 finish = time.perf_counter()
 
